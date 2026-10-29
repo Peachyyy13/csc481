@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CleanHome – บริการทำความสะอาดครบวงจร</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f3f9f6;--s:#fff;--t:#16302a;--m:#5d7770;--l:#d5e5df;--a:#2e9b7e;--ad:#237a63;--as:#d3efe5;--warn:#fdebd6}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1c19;--s:#16262a;--t:#e6f2ee;--m:#93aca4;--l:#2a4039;--a:#3cb593;--ad:#2e9b7e;--as:#1f3f36;--warn:#3a2c1a}}
+:root[data-theme="dark"]{--bg:#0f1c19;--s:#16262a;--t:#e6f2ee;--m:#93aca4;--l:#2a4039;--a:#3cb593;--ad:#2e9b7e;--as:#1f3f36;--warn:#3a2c1a}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--t);font-family:"Noto Sans Thai",system-ui,sans-serif;line-height:1.65}
+a{color:var(--a);text-decoration:none}
+:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+.w{max-width:1080px;margin:0 auto;padding:0 22px}
+header{background:var(--s);border-bottom:1px solid var(--l);position:sticky;top:0;z-index:5}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 0}
+.logo{font-weight:700;font-size:21px;color:var(--t);display:flex;align-items:center;gap:8px}
+.logo svg{width:30px;height:30px;color:var(--a)}
+nav{display:flex;gap:4px;flex-wrap:wrap;font-size:14.5px;font-weight:500}
+nav a{color:var(--t);padding:6px 12px;border-radius:999px}
+nav a.on{background:var(--as);color:var(--ad)}
+nav a.cta{background:var(--a);color:#fff}
+section[data-v]{display:none;padding:36px 0 56px}
+section[data-v].on{display:block}
+h1{font-size:clamp(28px,4.6vw,44px);line-height:1.25;margin:0 0 14px}
+h2{font-size:26px;margin:0 0 6px}
+.sub{color:var(--m);margin:0 0 22px}
+.btn{display:inline-block;font:inherit;font-weight:600;border:0;border-radius:999px;padding:11px 24px;background:var(--a);color:#fff;cursor:pointer}
+.btn:hover{background:var(--ad)}
+.btn.o{background:none;border:1px solid var(--l);color:var(--t)}
+.btn[disabled]{opacity:.5;cursor:default}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:20px 0 40px}
+.card{background:var(--s);border:1px solid var(--l);border-radius:16px;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.grid .card h3{margin:0 0 4px;font-size:17px}
+.grid .card p{margin:0;color:var(--m);font-size:14.5px}
+.pill{display:inline-block;background:var(--as);color:var(--ad);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:600}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:flex;gap:12px;align-items:center;padding:8px 0;color:var(--m)}
+.tl li::before{content:"";flex:none;width:16px;height:16px;border-radius:50%;border:2px solid var(--l);background:var(--s)}
+.tl li.d{color:var(--t)}.tl li.d::before{background:var(--a);border-color:var(--a)}
+.tl li.c{color:var(--t);font-weight:600}.tl li.c::before{border-color:var(--a);box-shadow:0 0 0 4px var(--as)}
+.band{background:var(--as);border-radius:16px;padding:26px;margin-top:36px;display:flex;gap:18px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.band p{margin:0;max-width:600px}
+.opts{display:grid;gap:10px;margin-bottom:16px}
+.opt{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--l);background:var(--s);border-radius:12px;padding:12px 14px;cursor:pointer}
+.opt:has(input:checked){border-color:var(--a);box-shadow:0 0 0 3px var(--as)}
+.opt input{margin-top:6px;accent-color:var(--a)}
+.opt small{color:var(--m);display:block}
+.opt b.pr{margin-left:auto;color:var(--ad);white-space:nowrap}
+label.f{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+input.i,select.i,textarea.i{width:100%;font:inherit;color:var(--t);background:var(--bg);border:1px solid var(--l);border-radius:10px;padding:10px 12px}
+input.i:focus,select.i:focus,textarea.i:focus{outline:none;border-color:var(--a);box-shadow:0 0 0 3px var(--as)}
+.steps{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;font-size:14px}
+.steps span{padding:4px 14px;border-radius:999px;border:1px solid var(--l);color:var(--m)}
+.steps span.on{background:var(--a);border-color:var(--a);color:#fff}
+.msg{color:#d64545;font-size:14px;min-height:22px;margin:8px 0}
+.row{display:flex;gap:10px;justify-content:space-between;margin-top:14px;flex-wrap:wrap}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.sum{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--l)}
+.warn{background:var(--warn);border-radius:12px;padding:12px 14px;margin:12px 0}
+.stars button{font-size:26px;background:none;border:0;cursor:pointer;color:var(--l)}
+.stars button.on{color:#f0b429}
+.tabs{display:inline-flex;border:1px solid var(--l);border-radius:999px;padding:3px;margin-bottom:16px;background:var(--s)}
+.tabs button{font:inherit;font-weight:600;border:0;background:none;color:var(--m);padding:7px 20px;border-radius:999px;cursor:pointer}
+.tabs button.on{background:var(--a);color:#fff}
+footer{border-top:1px solid var(--l);padding:22px 0;color:var(--m);font-size:14px}
+@media(max-width:780px){.hero,.two{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="w nav">
+  <a class="logo" href="#home"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 23 24 7l18 16"/><path d="M11 20v21h26V20"/><rect x="19" y="27" width="10" height="14" rx="2"/></svg>CleanHome</a>
+  <nav>
+    <a href="#home">หน้าหลัก</a><a href="#services">บริการ</a><a href="#book">จองบริการ</a><a href="#track">ติดตามงาน</a><a href="#staff">สำหรับพนักงาน</a><a class="cta" href="#signup">สมัครสมาชิก</a>
+  </nav>
+</div></header>
+
+<main class="w">
+<!-- HOME -->
+<section data-v="home">
+  <div class="hero">
+    <div>
+      <h1>จองแม่บ้านออนไลน์ ตรวจงานได้ก่อนส่งมอบ</h1>
+      <p class="sub" style="font-size:17px">เลือกบริการ เลือกพนักงานที่ผ่านการอบรม จ่ายเงินออนไลน์ แล้วติดตามสถานะได้ทุกขั้นตอนจนงานเสร็จ</p>
+      <a class="btn" href="#book">จองบริการเลย</a> <a class="btn o" href="#services">ดูบริการทั้งหมด</a>
+    </div>
+    <div class="card">
+      <span class="pill">ตัวอย่างสถานะงาน</span>
+      <ul class="tl" style="margin-top:10px"><li class="d">พนักงานรับงานแล้ว</li><li class="d">กำลังเดินทาง</li><li class="c">กำลังทำความสะอาด</li><li>เสร็จสิ้น – รอตรวจรับ</li></ul>
+    </div>
+  </div>
+  <h2>ทำไมต้อง CleanHome</h2><p class="sub">มาตรฐานเดียวกันทุกงาน</p>
+  <div class="grid">
+    <div class="card"><h3>ขั้นตอนชัดเจน</h3><p>ทุกงานมีขั้นตอนให้บริการและสถานะที่ตรวจสอบได้</p></div>
+    <div class="card"><h3>พนักงานผ่านการอบรม</h3><p>พนักงานเฉพาะด้าน ผ่านการอบรมก่อนรับงานจริง</p></div>
+    <div class="card"><h3>อุปกรณ์และน้ำยามาตรฐาน</h3><p>นำอุปกรณ์และน้ำยาที่ได้มาตรฐานมาเอง</p></div>
+    <div class="card"><h3>ตรวจงานก่อนส่งมอบ</h3><p>ลูกค้าตรวจรับงานได้ ถ้าไม่ผ่านแจ้งแก้ไขได้ทันที</p></div>
+  </div>
+  <h2 style="margin-top:40px">ขั้นตอนการใช้งาน</h2><p class="sub">จากสมัครสมาชิกจนปิดงาน</p>
+  <div class="grid">
+    <div class="card"><h3>1. สมัคร/เข้าสู่ระบบ</h3><p>เลือกประเภทสมาชิก ลูกค้าหรือพนักงาน</p></div>
+    <div class="card"><h3>2. เลือกบริการและเวลา</h3><p>ระบุรายละเอียดงาน ดูโปรไฟล์ แล้วเลือกพนักงาน</p></div>
+    <div class="card"><h3>3. ชำระเงินออนไลน์</h3><p>ยืนยันการจอง ชำระเงิน แล้วส่งคำขอถึงพนักงาน</p></div>
+    <div class="card"><h3>4. ติดตามและตรวจรับ</h3><p>ดูสถานะงาน ตรวจรับ ให้คะแนนพนักงาน</p></div>
+  </div>
+  <div class="band"><p><b>สำหรับบริษัทและองค์กร</b><br>ร่วมมือกับเราเพื่อดูแลความสะอาดสำนักงาน อาคาร และพื้นที่ส่วนกลางอย่างต่อเนื่อง</p><a class="btn" href="#services">ดูแพ็กเกจองค์กร</a></div>
+</section>
+
+<!-- SERVICES -->
+<section data-v="services">
+  <h2>บริการของเรา</h2><p class="sub">ราคาเริ่มต้นเป็นตัวอย่าง ปรับได้ตามขนาดพื้นที่</p>
+  <div class="grid" id="svGrid"></div>
+  <p style="margin-top:24px"><a class="btn" href="#book">จองบริการ</a></p>
+</section>
+
+<!-- BOOK -->
+<section data-v="book">
+  <h2>จองบริการ</h2><p class="sub">ทำตามขั้นตอนด้านล่าง ใช้เวลาไม่ถึงสองนาที</p>
+  <div class="steps" id="bSteps"></div>
+  <div class="card" id="bBody"></div>
+</section>
+
+<!-- TRACK -->
+<section data-v="track"><h2>ติดตามงาน</h2><p class="sub">สถานะอัปเดตทันทีเมื่อพนักงานเปลี่ยนสถานะ</p><div id="trBody"></div></section>
+
+<!-- STAFF -->
+<section data-v="staff"><h2>สำหรับพนักงาน</h2><p class="sub">รับงาน และอัปเดตสถานะให้ลูกค้าเห็น</p><div id="stBody"></div></section>
+
+<!-- SIGNUP -->
+<section data-v="signup">
+  <div style="max-width:520px;margin:0 auto">
+  <h2>สมัครสมาชิก</h2><p class="sub">เลือกประเภทบัญชีที่ต้องการ</p>
+  <div class="tabs" id="suTabs"><button class="on" data-m="c">ลูกค้า</button><button data-m="s">พนักงาน</button></div>
+  <form class="card" id="suForm" novalidate>
+    <label class="f" for="n">ชื่อ-นามสกุล</label><input class="i" id="n" autocomplete="name">
+    <label class="f" for="tel">เบอร์โทรศัพท์</label><input class="i" id="tel" inputmode="tel" autocomplete="tel">
+    <label class="f" for="em">อีเมล</label><input class="i" id="em" type="email" autocomplete="email">
+    <div id="stF" style="display:none">
+      <label class="f" for="dob">วันเกิด</label><input class="i" id="dob" type="date">
+      <label class="f" for="pos">ตำแหน่งที่สมัคร</label><select class="i" id="pos"><option value="">เลือกตำแหน่ง</option><option>แม่บ้านทำความสะอาด</option><option>พนักงานทำความสะอาดคอนโด</option><option>หัวหน้าทีม</option></select>
+    </div>
+    <label class="f" for="pw">รหัสผ่าน (อย่างน้อย 8 ตัว)</label><input class="i" id="pw" type="password" autocomplete="new-password">
+    <label class="f" for="pw2">ยืนยันรหัสผ่าน</label><input class="i" id="pw2" type="password" autocomplete="new-password">
+    <label class="opt" style="margin-top:14px;border:0;padding:0;background:none"><input type="checkbox" id="ag"><span>ฉันยอมรับข้อกำหนดและนโยบายความเป็นส่วนตัว</span></label>
+    <div class="msg" id="suMsg" role="status"></div>
+    <button class="btn" style="width:100%" type="submit">สมัครสมาชิก</button>
+  </form></div>
+</section>
+</main>
+
+<footer><div class="w">© CleanHome – บริการทำความสะอาดครบวงจร · เว็บไซต์ต้นแบบจากโครงงาน CSC481</div></footer>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+var SV=[
+ {id:"gen",n:"ทำความสะอาดทั่วไป",d:"กวาด ถู เช็ด ห้องน้ำ ห้องครัว (2–3 ชม.)",p:590},
+ {id:"deep",n:"ทำความสะอาดครั้งใหญ่",d:"ขัดล้างลึก คราบฝังแน่น ทุกซอกมุม (5–6 ชม.)",p:1290},
+ {id:"move",n:"ก่อนย้ายเข้า/ย้ายออก",d:"ห้องว่าง ทำความสะอาดทั้งหลังพร้อมส่งมอบ",p:1890},
+ {id:"org",n:"สำนักงานและองค์กร",d:"แพ็กเกจรายเดือนสำหรับบริษัทและองค์กร",p:0}
+];
+var ST=[
+ {id:"s1",n:"สมศรี ใจดี",r:4.9,j:128,t:"แม่บ้านประจำ"},
+ {id:"s2",n:"วิชัย รักงาน",r:4.8,j:96,t:"ทำความสะอาดคอนโด"},
+ {id:"s3",n:"มาลี สะอาดตา",r:4.7,j:71,t:"ล้างห้องน้ำ/ครัว"}
+];
+var STATUS=["รอพนักงานรับงาน","พนักงานรับงานแล้ว","กำลังเดินทาง","กำลังทำความสะอาด","เสร็จสิ้น – รอตรวจรับ","ปิดงานแล้ว"];
+var ACT=["รับงานนี้","เริ่มเดินทาง","เริ่มทำความสะอาด","ทำเสร็จแล้ว"];
+var price=function(p){return p?"เริ่มต้น "+p.toLocaleString("th-TH")+" บาท":"ตามตกลง"};
+var b={step:1},job=null;
+
+$("svGrid").innerHTML=SV.map(function(s){return '<div class="card"><h3>'+s.n+'</h3><p>'+s.d+'</p><p style="margin-top:10px"><span class="pill">'+price(s.p)+'</span></p></div>'}).join("");
+
+function bookSteps(){
+  $("bSteps").innerHTML=["บริการ","วันและเวลา","เลือกพนักงาน","ชำระเงิน"].map(function(x,i){return '<span class="'+(b.step===i+1?"on":"")+'">'+(i+1)+'. '+x+'</span>'}).join("");
+}
+function bookRender(){
+  bookSteps();var h="",s=b.step;
+  if(s===1){
+    h='<div class="opts">'+SV.filter(function(x){return x.p}).map(function(x){return '<label class="opt"><input type="radio" name="sv" value="'+x.id+'"'+(b.sv===x.id?" checked":"")+'><span><b>'+x.n+'</b><small>'+x.d+'</small></span><b class="pr">'+x.p.toLocaleString("th-TH")+' บาท</b></label>'}).join("")+'</div>';
+  }else if(s===2){
+    h='<label class="f" for="bd">วันที่</label><input class="i" id="bd" type="date" value="'+(b.d||"")+'"><label class="f" for="bt">เวลา</label><select class="i" id="bt">'+["09:00","11:00","13:00","15:00"].map(function(t){return '<option'+(b.t===t?" selected":"")+'>'+t+'</option>'}).join("")+'</select><label class="f" for="ba">ที่อยู่และรายละเอียดงาน</label><textarea class="i" id="ba" rows="3" placeholder="เช่น คอนโด 1 ห้องนอน ชั้น 12 มีสัตว์เลี้ยง">'+(b.a||"")+'</textarea>';
+  }else if(s===3){
+    h='<div class="opts">'+ST.map(function(x){return '<label class="opt"><input type="radio" name="st" value="'+x.id+'"'+(b.st===x.id?" checked":"")+'><span><b>'+x.n+'</b><small>'+x.t+' · ผ่านการอบรม · งานที่ทำแล้ว '+x.j+' งาน</small></span><b class="pr">★ '+x.r+'</b></label>'}).join("")+'</div>';
+  }else{
+    var sv=SV.filter(function(x){return x.id===b.sv})[0],st=ST.filter(function(x){return x.id===b.st})[0];
+    h='<div class="two"><div><div class="sum"><span>บริการ</span><b>'+sv.n+'</b></div><div class="sum"><span>วันเวลา</span><b>'+b.d+' '+b.t+'</b></div><div class="sum"><span>พนักงาน</span><b>'+st.n+'</b></div><div class="sum"><span>รวม</span><b>'+sv.p.toLocaleString("th-TH")+' บาท</b></div></div><div class="opts"><label class="opt"><input type="radio" name="pm" value="พร้อมเพย์" checked><span><b>พร้อมเพย์ / QR</b></span></label><label class="opt"><input type="radio" name="pm" value="บัตรเครดิต"><span><b>บัตรเครดิต/เดบิต</b></span></label></div></div>';
+  }
+  h+='<div class="msg" id="bMsg" role="alert"></div><div class="row">'+(s>1?'<button class="btn o" id="bBack">ย้อนกลับ</button>':'<span></span>')+'<button class="btn" id="bNext">'+(s===4?"ชำระเงินและยืนยันการจอง":"ถัดไป")+'</button></div>';
+  $("bBody").innerHTML=h;
+  if($("bBack"))$("bBack").onclick=function(){b.step--;bookRender()};
+  $("bNext").onclick=bookNext;
+}
+function bookNext(){
+  var s=b.step,m=$("bMsg"),r;
+  if(s===1){r=document.querySelector('[name=sv]:checked');if(!r){m.textContent="กรุณาเลือกบริการ";return}b.sv=r.value}
+  if(s===2){b.d=$("bd").value;b.t=$("bt").value;b.a=$("ba").value.trim();if(!b.d||!b.a){m.textContent="กรุณาเลือกวันที่และกรอกที่อยู่";return}}
+  if(s===3){r=document.querySelector('[name=st]:checked');if(!r){m.textContent="กรุณาเลือกพนักงาน";return}b.st=r.value}
+  if(s===4){
+    job={sv:SV.filter(function(x){return x.id===b.sv})[0],st:ST.filter(function(x){return x.id===b.st})[0],d:b.d,t:b.t,a:b.a,pm:document.querySelector('[name=pm]:checked').value,s:0,fix:false,done:false,rate:0};
+    b={step:1};bookRender();upd();location.hash="track";return;
+  }
+  b.step++;bookRender();
+}
+
+function renderTrack(){
+  var el=$("trBody");
+  if(!job){el.innerHTML='<div class="card">ยังไม่มีงานที่กำลังดำเนินการ <a href="#book">จองบริการ</a></div>';return}
+  var h='<div class="two"><div class="card"><span class="pill">'+(job.s===5?"เสร็จสมบูรณ์":"กำลังดำเนินการ")+'</span><h3 style="margin:10px 0 2px">'+job.sv.n+'</h3><p class="sub" style="margin:0">'+job.d+' '+job.t+' · พนักงาน '+job.st.n+'<br>ชำระแล้วผ่าน'+job.pm+'</p></div><div class="card"><ul class="tl">'+STATUS.map(function(x,i){return '<li class="'+(i<job.s?"d":i===job.s?"c":"")+'">'+x+(i===3&&job.fix?" (แก้ไขงานตามที่แจ้ง)":"")+'</li>'}).join("")+'</ul></div></div>';
+  if(job.s===4){
+    h+='<div class="card" style="margin-top:16px"><b>ตรวจรับงาน</b><p class="sub" style="margin:4px 0 12px">งานเรียบร้อยตามที่ต้องการหรือไม่</p><div id="fx" style="display:none"><textarea class="i" id="fxt" rows="2" placeholder="แจ้งจุดที่ต้องแก้ไข"></textarea><div class="msg" id="fxm"></div><button class="btn" id="fxs">ส่งให้พนักงานแก้ไข</button></div><div id="ck"><button class="btn" id="okb">งานเรียบร้อย</button> <button class="btn o" id="bad">แจ้งปัญหา</button></div></div>';
+  }
+  if(job.s===5){
+    h+='<div class="card" style="margin-top:16px"><b>ให้คะแนนพนักงาน</b><div class="stars" id="stars">'+[1,2,3,4,5].map(function(n){return '<button data-n="'+n+'" class="'+(job.rate>=n?"on":"")+'" aria-label="'+n+' ดาว">★</button>'}).join("")+'</div><p class="sub" style="margin:0">'+(job.rate?"ขอบคุณสำหรับคะแนน บันทึกประวัติการทำงานแล้ว":"แตะดาวเพื่อให้คะแนน")+'</p></div>';
+  }
+  el.innerHTML=h;
+  if($("okb")){$("okb").onclick=function(){job.s=5;upd()};
+    $("bad").onclick=function(){$("fx").style.display="block";$("ck").style.display="none"};
+    $("fxs").onclick=function(){if(!$("fxt").value.trim()){$("fxm").textContent="กรุณาระบุจุดที่ต้องแก้ไข";return}job.fix=true;job.s=3;upd()}}
+  if($("stars"))$("stars").onclick=function(e){var n=e.target.dataset.n;if(n){job.rate=+n;renderTrack()}};
+}
+function renderStaff(){
+  var el=$("stBody");
+  if(!job){el.innerHTML='<div class="card">ยังไม่มีงานใหม่ ลองสร้างการจองจากหน้า <a href="#book">จองบริการ</a> แล้วกลับมาดูที่นี่</div>';return}
+  var h='<div class="card"><span class="pill">'+STATUS[job.s]+'</span><h3 style="margin:10px 0 2px">'+job.sv.n+'</h3><p class="sub" style="margin:0">'+job.d+' '+job.t+'<br>'+job.a+'<br>ผู้รับงาน: '+job.st.n+(job.fix&&job.s<4?'<br><b>ลูกค้าแจ้งให้แก้ไขงาน</b>':"")+'</p>';
+  h+=job.s<4?'<p style="margin:14px 0 0"><button class="btn" id="act">'+ACT[job.s]+'</button></p>':'<p class="sub" style="margin:14px 0 0">'+(job.s===4?"รอลูกค้าตรวจรับงาน":"ปิดงานแล้ว บันทึกประวัติเรียบร้อย")+'</p>';
+  el.innerHTML=h+'</div>';
+  if($("act"))$("act").onclick=function(){job.s++;upd()};
+}
+function upd(){renderTrack();renderStaff()}
+
+var mode="c";
+$("suTabs").onclick=function(e){var m=e.target.dataset.m;if(!m)return;mode=m;
+  [].forEach.call($("suTabs").children,function(x){x.classList.toggle("on",x.dataset.m===m)});
+  $("stF").style.display=m==="s"?"block":"none";$("suMsg").textContent=""};
+$("suForm").onsubmit=function(e){
+  e.preventDefault();var m=$("suMsg"),er="";
+  if(!$("n").value.trim())er="กรุณากรอกชื่อ-นามสกุล";
+  else if(!/^0\d{8,9}$/.test($("tel").value.replace(/[-\s]/g,"")))er="กรุณากรอกเบอร์โทร 9–10 หลัก ขึ้นต้นด้วย 0";
+  else if(!/\S+@\S+\.\S+/.test($("em").value))er="กรุณากรอกอีเมลให้ถูกต้อง";
+  else if(mode==="s"&&(!$("dob").value||!$("pos").value))er="กรุณากรอกวันเกิดและเลือกตำแหน่ง";
+  else if($("pw").value.length<8)er="รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร";
+  else if($("pw").value!==$("pw2").value)er="รหัสผ่านไม่ตรงกัน";
+  else if(!$("ag").checked)er="กรุณายอมรับข้อกำหนดก่อนสมัคร";
+  m.style.color=er?"#d64545":"var(--ad)";m.textContent=er||"สมัครสมาชิกสำเร็จแล้ว";
+  if(!er)$("suForm").reset();
+};
+
+function route(){
+  var v=location.hash.slice(1)||"home";
+  if(!document.querySelector('[data-v="'+v+'"]'))v="home";
+  document.querySelectorAll("[data-v]").forEach(function(s){s.classList.toggle("on",s.dataset.v===v)});
+  document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+v&&!a.classList.contains("cta"))});
+  scrollTo(0,0);
+}
+addEventListener("hashchange",route);
+bookRender();upd();route();
+</script>
+</body>
+</html>
